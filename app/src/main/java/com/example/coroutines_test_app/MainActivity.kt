@@ -29,17 +29,10 @@ test()
     }
 
     private fun test(){
-/*//launch call
-        lifecycleScope.launch(Dispatchers.Main){
-
-            Log.i("lnbti","Starting${Thread.currentThread().name}")
-            val user = async {  fetchUser()}
-            showUser(user.await())
-        }*/
-       fetchAndShowUser()
+//        fetchAndShowUser()
         fetchAndShowUser2()
-
     }
+
     /** launch */
     private fun fetchAndShowUser(){
         lifecycleScope.launch(Dispatchers.Main){
@@ -59,7 +52,7 @@ test()
             Log.i("LNBTI", "User fetching..")
             delay(2000)
             Log.i("LNBTI", "User fetching.. completed ${Thread.currentThread().name}")
-            return@withContext User(4, "p1" )
+            return@withContext User(1, "Sam" )
         }
     }
 
@@ -79,8 +72,8 @@ test()
 //                val user2 = longRunningTaskTwo() // 4 seconds
 //                showUserResults(user1, user2)
 
-                val user1 = async {   longRunningTaskOne()}  //2 seconds
-                val user2 =  async { longRunningTaskTwo() } // 8 seconds
+                val user1 = async { longRunningTaskOne() }// 2 seconds
+                val user2 = async { longRunningTaskTwo() } // 4 seconds
                 showUserResults(user1.await(), user2.await())
             }
             Log.i("LNBTI", "Time taken: $timeTaken")
@@ -95,7 +88,7 @@ test()
             delay(2000)
             Log.i("LNBTI", "User fetching task 1.. completed ${Thread.currentThread().name}")
 
-            return@withContext User(3, "pasan")
+            return@withContext User(1, "Ann")
         }
 
     }
@@ -108,7 +101,7 @@ test()
             delay(4000)
             Log.i("LNBTI", "User fetching task 2.. completed ${Thread.currentThread().name}")
 
-            return@withContext User(4, "Johnjgdgfg")
+            return@withContext User(2, "John")
         }
     }
 
