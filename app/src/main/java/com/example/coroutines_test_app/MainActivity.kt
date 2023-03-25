@@ -6,10 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,8 +32,8 @@ test()
         lifecycleScope.launch(Dispatchers.Main){
 
             Log.i("lnbti","Starting${Thread.currentThread().name}")
-            val user = fetchUser()
-            showUser(user)
+            val user = async {  fetchUser()}
+            showUser(user.await())
         }
 
 
